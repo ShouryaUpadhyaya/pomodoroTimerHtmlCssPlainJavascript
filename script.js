@@ -13,7 +13,10 @@ let minutesId;
 let secondsId;
 let noTimePlayClicked = 0;
 let startTime;
+let startTotalSeconds;
+let stopTotalSeconds;
 let stopTime;
+let workButtonClicket = true;
 
 // event listeners
 play.addEventListener("click", (e) => {
@@ -28,12 +31,13 @@ play.addEventListener("click", (e) => {
 });
 
 workButton.addEventListener("click", (e) => {
+  workButtonClicket = true;
   console.log("workButton pressed");
-  //
 });
 
 breakButton.addEventListener("click", (e) => {
   console.log("break button pressed");
+  workButtonClicket = false;
 });
 
 // Functions
@@ -42,6 +46,8 @@ function stopTimer() {
   clearInterval(minutesId);
   console.log(`in stop timer ${statePlayButton}`);
   statePlayButton = false;
+  recordStopTime();
+  recordTotalTime();
 }
 
 function secondsTimer() {
@@ -79,8 +85,32 @@ function startTimer() {
 
 function recordStartTime() {
   let minutesInSeconds = parseInt(minutes.value) * 60;
-  let startTotalSeconds = parseInt(seconds.value) + minutesInSeconds;
+  startTotalSeconds = parseInt(seconds.value) + minutesInSeconds;
   let startTimeMinutes = Math.floor(startTotalSeconds / 60);
   let startTimeSeconds = startTotalSeconds % 60;
   startTime = { minutes: startTimeMinutes, seconds: startTimeSeconds };
+  // console.log(startTime);
+}
+function recordStopTime() {
+  let minutesInSeconds = parseInt(minutes.value) * 60;
+  stopTotalSeconds = parseInt(seconds.value) + minutesInSeconds;
+  let stopTimeMinutes = Math.floor(stopTotalSeconds / 60);
+  let stopTimeSeconds = stopTotalSeconds % 60;
+  stopTime = { minutes: stopTimeMinutes, seconds: stopTimeSeconds };
+  // console.log(stopTime);
+}
+function recordTotalTime() {
+  if (workButtonClicket === true) {
+    let WorkSeconds = startTotalSeconds - stopTotalSeconds;
+    totalWorkTime = WorkSeconds + totalWorkTime;
+    console.log(
+      `totalWorkSeconds: ${totalWorkTime}, stopTotalSeconds: ${stopTotalSeconds}, startTotalSeconds: ${startTotalSeconds}`
+    );
+  } else {
+    let BreakSeconds = startTotalSeconds - stopTotalSeconds;
+    totalBreakTime = BreakSeconds + totalBreakTime;
+    console.log(
+      `totalBreakSeconds: ${totalBreakTime}, stopTotalSeconds: ${stopTotalSeconds}, startTotalSeconds: ${startTotalSeconds}`
+    );
+  }
 }
