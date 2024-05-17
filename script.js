@@ -4,6 +4,7 @@ const minutes = document.getElementById("minutesInput");
 const play = document.getElementById("play");
 const workButton = document.getElementById("workButton");
 const breakButton = document.getElementById("breakButton");
+const heading = document.querySelector("h1");
 seconds.value = "00";
 minutes.value = "50";
 let statePlayButton = false;
@@ -17,7 +18,8 @@ let startTotalSeconds;
 let stopTotalSeconds;
 let stopTime;
 let workButtonClicket = true;
-
+let workTime;
+let breakTime;
 // event listeners
 play.addEventListener("click", (e) => {
   console.log(statePlayButton);
@@ -27,17 +29,19 @@ play.addEventListener("click", (e) => {
     stopTimer();
   }
   noTimePlayClicked += 1;
-  console.log(noTimePlayClicked);
+  displayHeading();
 });
 
 workButton.addEventListener("click", (e) => {
   workButtonClicket = true;
   console.log("workButton pressed");
+  displayHeading();
 });
 
 breakButton.addEventListener("click", (e) => {
   console.log("break button pressed");
   workButtonClicket = false;
+  displayHeading();
 });
 
 // Functions
@@ -103,14 +107,35 @@ function recordTotalTime() {
   if (workButtonClicket === true) {
     let WorkSeconds = startTotalSeconds - stopTotalSeconds;
     totalWorkTime = WorkSeconds + totalWorkTime;
-    console.log(
-      `totalWorkSeconds: ${totalWorkTime}, stopTotalSeconds: ${stopTotalSeconds}, startTotalSeconds: ${startTotalSeconds}`
-    );
+    let totalWorkHours = Math.floor(totalWorkTime / 3600);
+    let totalWorkMinutes = Math.floor((totalWorkTime % 3600) / 60);
+    let totalWorkSeconds = totalWorkTime % 60;
+    workTime = {
+      hours: totalWorkHours,
+      minutes: totalWorkMinutes,
+      seconds: totalWorkSeconds,
+    };
+    // console.log(
+    //   `totalWorkSeconds: ${totalWorkTime}, stopTotalSeconds: ${stopTotalSeconds}, startTotalSeconds: ${startTotalSeconds}`
+    // );
   } else {
     let BreakSeconds = startTotalSeconds - stopTotalSeconds;
     totalBreakTime = BreakSeconds + totalBreakTime;
-    console.log(
-      `totalBreakSeconds: ${totalBreakTime}, stopTotalSeconds: ${stopTotalSeconds}, startTotalSeconds: ${startTotalSeconds}`
-    );
+    let totalBreakHours = Math.floor(totalBreakTime / 3600);
+    let totalBreakMinutes = Math.floor((totalBreakTime % 3600) / 60);
+    let totalBreakSeconds = totalBreakTime % 60;
+    breakTime = {
+      hours: totalBreakHours,
+      minutes: totalBreakMinutes,
+      seconds: totalBreakSeconds,
+    };
+  }
+}
+function displayHeading() {
+  if (workButtonClicket === true) {
+    console.log(workTime.hours);
+    heading.innerText = `${workTime.hours}hr : ${workTime.minutes}min : ${workTime.seconds}sec`;
+  } else {
+    heading.innerText = `${breakTime.hours}hr : ${breakTime.minutes}min : ${breakTime.seconds}sec`;
   }
 }
