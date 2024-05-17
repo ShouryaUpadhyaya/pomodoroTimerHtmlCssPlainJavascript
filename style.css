@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+h1 {
+  /* margin-top: em; */
+  font-weight: bolder;
+  font-size: 3em;
+  letter-spacing: 0.4em;
+  margin-bottom: 1.5em;
+  text-shadow: #fd3084 0px 0px 20px;
+}
+#heading:hover {
+  transform: translateY(-5px);
+  border-radius: 30px;
+  padding: 0px;
+  transition: 100ms;
+}
+.btn {
+  padding: 0.5em 2em 0.5em 2.5em;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 15px;
+  color: #fff6fb;
+  letter-spacing: 0.3em;
+  text-shadow: -2px 2px 5px #fd3084;
+  background-color: transparent;
+  border: 2px solid #feb1de;
+  box-shadow: 0 0 0px 1px #f11271, 0 0 10px 2px #fd3084,
+    inset 0 0 0px 1px #f11271, inset 0 0 10px 2px #fd3084;
+  transition: 100ms;
+}
+
+.btn:hover {
+  box-shadow: 0 0 0px 1px #f11271, 0 0 10px 2px #fd3084,
+    inset 0 0 0px 1px #f11271, inset 0 0 30px 2px #fd3084;
+  text-shadow: 0 0 10px #fd3084;
+  transform: translateY(-5px);
+}
+
+.btn:active {
+  box-shadow: 0 0 0px 1px #f11271, 0 0 25px 2px #fd3084,
+    inset 0 0 0px 1px #f11271, inset 0 0 30px 2px #fd3084;
+  transform: translateY(1px);
+}
+.workBreak {
+  display: flex;
+}
+.workBreak .btnWorkBreak {
+  text-shadow: -2px 2px 5px #fd3084;
+  background-color: transparent;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  border: solid 2px #feb1de;
+  transition: 100ms;
+  padding: 0.5em 1.5em;
+  text-align: center;
+  box-shadow: 0 0 0px 1px #f11271, 0 0 10px 2px #fd3084,
+    inset 0 0 0px 1px #f11271, inset 0 0 10px 2px #fd3084;
+}
+#workButton {
+  border-radius: 30px 0 0 30px;
+}
+#breakButton {
+  border-radius: 0px 30px 30px 0;
+}
+.circle {
+  height: 8em;
+  background-color: transparent;
+  width: 8em;
+  border-radius: 50%;
+  border: 2px solid #feb1de;
+  margin: 1em 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  box-shadow: 0 0 0px 1px #f11271, 0 0 10px 2px #fd3084,
+    inset 0 0 0px 1px #f11271, inset 0 0 10px 2px #fd3084;
+}
+.underline {
+  position: relative;
+  display: inline-block;
+  animation: neonAnim 2s alternate-reverse infinite;
+}
+
+.underline::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* Adjust as needed for the desired gap */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  color: #fff;
+  background-color: #ffffff;
+  /* filter: drop-shadow(255, 94, 94, 0.56); Adjust glow effect */
+  z-index: -1;
+  box-shadow: 0 0 0px 1px #f11271, 0 0 10px 2px #fd3084;
+  /* inset 0 0 0px 1px #f11271, inset 0 0 10px 2px #fd3084; */
+}
+.neon {
+  animation: neonAnim 2s alternate-reverse infinite;
+  color: #ffffff;
+}
+@keyframes neonAnim {
+  from {
+    text-shadow: 0 0 32px #f11271, 0 0 62px #f11271, 0 0 122px #f11271;
+  }
+  to {
+    text-shadow: 0 0 27px #f11271, 0 0 42px #f11271,
+      0 0 82px rgba(0, 123, 255, 0.7);
+    text-shadow: 0 0 27px #f11271, 0 0 42px #f11271,
+      0 0 82px rgba(0, 123, 255, 0.7);
+  }
+}
+.btnWorkBreak:hover {
+  border-radius: 20px;
+  box-shadow: 0 0 0px 1px #f11271, 0 0 10px 2px #fd3084,
+    inset 0 0 0px 1px #f11271, inset 0 0 30px 2px #fd3084;
+  text-shadow: 0 0 10px #fd3084;
+  transform: translateY(-5px);
+}
+#minutes:hover {
+  cursor: text;
+}
+.timerInput {
+  color: white;
+  background-color: #2121;
+  border: solid 0px;
+  font-size: 1.5em;
+  width: 1.5em;
+  text-align: center;
+  outline: none;
+}
+.timerInput:hover {
+  transform: translateY(-5px);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

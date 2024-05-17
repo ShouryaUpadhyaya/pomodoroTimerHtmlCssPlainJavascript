@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <div id="heading">
+      <h1 class="underline neon">Pomodoro</h1>
+    </div>
+    <div class="workBreak">
+      <div class="btnWorkBreak" id="workButton">
+        <h2 id="">Work</h2>
+      </div>
+      <div class="btnWorkBreak" id="breakButton">
+        <h2>Break</h2>
+      </div>
+    </div>
+    <div class="circle">
+      <p class="clockTime" id="minutes">
+        <input
+          class="timerInput"
+          type="number"
+          name="minutes"
+          id="minutesInput"
+          value="00"
+        />
+      </p>
+      <p>:</p>
+      <p class="clockTime" id="seconds">
+        <input
+          class="timerInput"
+          type="number"
+          name="seconds"
+          id="secondsInput"
+          value="00"
+          max="60"
+          min="00"
+        />
+      </p>
+    </div>
+    <button id="play" class="btn"><i class="fa-solid fa-play"></i></button>
+  </body>
+  <script src="script.js"></script>
+</html>
